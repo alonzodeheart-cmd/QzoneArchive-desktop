@@ -12,6 +12,12 @@ AI collaborators: please read AGENTS.md for project-specific instructions, archi
 
 将 QQ 空间动态、照片、视频与互动记录安全归档到本地的桌面 / 移动端工具。
 
+> [!NOTE]
+> **衍生版本说明（Modified fork，非官方版本）**
+> 本版本基于上游 [Gaoshu705/QzoneArchive](https://github.com/Gaoshu705/QzoneArchive)（GPL-3.0）修改而来，并非上游官方发布。按 GPL-3.0 要求，全部修改后的源码同样以 GPL-3.0 开放，任何人都可在此基础上继续修改或移除本版本新增内容。
+> **修改范围**：仅在「概览」首页新增一条可关闭的推广横幅组件 `src/components/PromoBanner.vue`（含二维码与海报弹层，素材位于 `src/assets/promo/`），未改动任何登录、抓取、归档、数据库与导出逻辑。
+> 需要官方原版请前往上游仓库获取，请勿将本衍生版与官方版本混淆。
+
 [**详细使用教程**](https://www.bilibili.com/video/BV1p7MZ6xEfk) 
 [**网盘下载地址**](https://pan.quark.cn/s/69baf8c8aadc)
 

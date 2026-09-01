@@ -8,6 +8,7 @@ import ProgressBar from "primevue/progressbar";
 import Tag from "primevue/tag";
 import QzoneText from "../components/QzoneText.vue";
 import StatCard from "../components/StatCard.vue";
+import PromoBanner from "../components/PromoBanner.vue";
 import { useAuthStore } from "../stores/auth";
 import { getArchiveOverview, getArchiveProgress, getInteractionRanking, listArchivedFeeds, type ArchiveItem, type ArchiveOverview, type ArchiveProgress, type InteractionRank } from "../utils/qzone";
 
@@ -67,6 +68,7 @@ onBeforeUnmount(releaseAvatars);
     <div><span class="section-kicker">{{ loggedIn ? `QQ ${user?.uin}` : "开始使用" }}</span><h2>{{ loggedIn ? `${user?.nickname}，欢迎回来` : "把珍贵的空间记忆，安全保存在本地" }}</h2><p>{{ loggedIn ? `本地已保存 ${overview.dynamics} 条动态和 ${overview.pictures} 张图片。` : "登录 QQ 空间后，可以归档动态、图片、视频和互动记录。" }}</p></div>
     <Button :label="loggedIn ? '开始归档' : '登录 QQ 空间'" :icon="loggedIn ? 'pi pi-download' : 'pi pi-link'" :loading="loading" @click="primaryAction" />
   </section>
+  <PromoBanner />
   <section class="stats-grid" aria-label="归档统计">
     <StatCard label="动态" :value="String(overview.dynamics)" :hint="overview.dynamics ? '当前账号本地归档' : '等待首次归档'" icon="pi pi-comment" tone="blue" />
     <StatCard label="照片" :value="String(overview.pictures)" :hint="overview.pictures ? '动态图片总数' : '暂无归档图片'" icon="pi pi-images" tone="purple" />

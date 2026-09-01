@@ -36,3 +36,6 @@ douyin-video-script.md
 xiaohongshu-video-script.md
 sign-apk.bat
 .playwright-mcp
+
+# Rust / Tauri build output
+/src-tauri/target/
