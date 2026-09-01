@@ -1,0 +1,66 @@
+name: Release Promo Windows
+
+on:
+  push:
+    tags:
+      - "v*-promo*"
+
+concurrency:
+  group: release-promo-windows-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build Windows installer
+        run: npx tauri build --bundles nsis
+
+      - name: Rename installer
+        shell: pwsh
+        run: |
+          $dir = "src-tauri/target/release/bundle/nsis"
+          Get-ChildItem "$dir/*.exe" | ForEach-Object {
+            Rename-Item $_.FullName "windows_x64_$($_.Name)"
+          }
+
+      - name: Publish latest Arong release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: 空间归档 1.0.4 阿荣版
+          tag_name: ${{ github.ref_name }}
+          files: src-tauri/target/release/bundle/nsis/*.exe
+          draft: false
+          prerelease: false
+          make_latest: true
+          fail_on_unmatched_files: true
+          body: |
+            ## 阿荣版更新
+
+            首页推广语已更新为“每天一杯奶茶钱”“学生党赚零花，做你的小金库”。
+            归档、登录、数据库与导出逻辑均未改动。
+
+            ## Windows 安装
+
+            下载 `windows_x64_` 开头的 `.exe` 文件，双击安装。
+            支持 Windows 10/11 x64，并会创建开始菜单入口。
+
+            本版本基于 Gaoshu705/QzoneArchive（GPL-3.0）修改，为非官方衍生版本。
