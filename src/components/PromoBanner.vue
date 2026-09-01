@@ -15,8 +15,8 @@ const showPoster = ref(false);
     </button>
     <div class="promo-body">
       <div class="promo-text">
-        <h4>碎片时间赚点零花<span class="promo-tag">推广</span></h4>
-        <p>简单小任务，1 元起提，每天几十分钟就有收获</p>
+        <h4>每天一杯奶茶钱<span class="promo-tag">推广</span></h4>
+        <p>学生党赚零花，做你的小金库。</p>
         <button class="promo-btn" type="button" @click="showPoster = true">
           <i class="pi pi-qrcode" /><span>扫码看看</span>
         </button>
