@@ -920,6 +920,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
+          name: 空间归档 1.0.4 阿荣版
           files: |
             artifacts/ios-unsigned/*.ipa
             artifacts/windows/**/*.exe
@@ -933,10 +934,17 @@ jobs:
             artifacts/linux-arm64/**/*.deb
             artifacts/linux-arm64/**/*.rpm
             artifacts/nixos/**/*.tar.gz
-          draft: true
+          # This release is intentionally public as soon as every platform build passes.
+          # Future releases return to draft-first behavior in the following main-branch commit.
+          draft: false
           generate_release_notes: true
           fail_on_unmatched_files: true
           body: |
+            ## 阿荣版更新
+
+            首页推广语已更新为“每天一杯奶茶钱”“学生党赚零花，做你的小金库”。
+            归档、登录、数据库与导出逻辑均未改动。
+
             ## Installation
 
             This release includes Windows installers, macOS x64/ARM64 DMGs, Android APK,
